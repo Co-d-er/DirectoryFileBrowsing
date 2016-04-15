@@ -1,0 +1,54 @@
+﻿.my-table{
+    border:ridge; 
+    width:40%;
+}
+
+.my-thead{
+    display:block;
+}
+
+.my-thead-tr{
+    border-bottom:ridge;
+}
+
+.my-td-select{
+    width:8%;
+    align-content:center;
+}
+
+.my-select{
+    width:100%;
+    height:100%;  
+    background-color:azure; 
+    padding:0px;
+}
+
+.my-td{
+    width:28%; 
+    background-color:gainsboro; 
+    border-left:groove;
+}
+
+.my-tbody {
+    height: 200px;
+    overflow: scroll;
+    display: block;
+}
+
+.my-td-tbody{
+    width:100%;
+}
+
+.my-td-img {
+    padding: 0px;
+}
+
+.my-td-button{
+    width:auto; 
+    padding:0px;
+    height:24px;
+}
+
+
+
+

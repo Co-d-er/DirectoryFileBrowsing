@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html ng-app="Myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/Libraries/angular.min.js"></script>
+    <script src="Scripts/App/Module.js"></script>
+    <script src="Scripts/App/Service.js"></script>
+    <script src="Scripts/App/Controller.js"></script>
+
+    <link href="Content/site.css" rel="stylesheet" type="text/css" />
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    
+</head>
+<body ng-controller="crudController" >    
+    <p align="center">My Manager Files</p>
+    <div align="center">
+        <table class="my-table">
+            <thead class="my-thead">
+                <tr class="my-thead-tr">
+                    <td class="my-td-select" colspan="2">
+                        <select class="my-select" ng-model="selected" ng-change="changeDisk(selected)">
+                            <option ng-repeat="(name, value) in Respond.Disks" ng-if="value">{{name}}</option>
+                            <option ng-repeat="(name, value) in Respond.Disks" ng-if="!value" disabled>{{name}}</option>
+                        </select>
+                    </td>
+                    <td class="my-td"><strong>Less 10Mb:</strong><em ng-show="!loading">{{Respond.Less_10Mb}}</em></td>
+                    <td class="my-td"><strong>10Mb-50Mb:</strong><em ng-show="!loading">{{Respond.Beetween_10Mb_50Mb}}</em></td>
+                    <td class="my-td"><strong>More 100Mb:</strong><em ng-show="!loading">{{Respond.More_100Mb}}</em></td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="border-bottom:ridge"><strong>Current path:</strong><em ng-show="!loading">{{Respond.Path}}</em></td> 
+                </tr>
+            </thead>
+            <tbody class="my-tbody">
+                <tr ng-show="!isRoot">
+                    <td ng-show="!loading"><img class="my-td-img" src="/Images/go-back-icon_1.png" /></td>
+                    <td ng-show="!loading" class="my-td-tbody"><button class="btn-link my-td-button" ng-click="changeFolder(Respond.Path, '...')">...</button></td>
+                </tr>
+                <tr ng-show="!loading" ng-repeat="(name, value) in Respond.Folders">
+                    <td><img class="my-td-img" src="/Images/folder1.png" /></td>
+                    <td ng-if="value" class="my-td-tbody"><button class="btn-link my-td-button" ng-click="changeFolder(Respond.Path, name)">{{name}}</button></td>
+                    <td ng-if="!value" class="my-td-tbody"><button class="btn-link my-td-button" disabled style="color:red">{{name}}</button></td>
+                </tr>
+                <tr ng-repeat="list in Respond.Files" ng-show="!loading">
+                    <td><img class="my-td-img" src="/Images/Adobe_Photoshop_Lightroom_Data_1.png" /></td>
+                    <td class="my-td-tbody"><button class="btn-link my-td-button" disabled>{{list}}</button></td>
+                </tr>
+                <tr ng-show="loading">
+                    <td><img src="/Images/loading.gif" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<p ng-repeat="er in Persons.Errors">Error: {{er}}</p>-->
+    </div>
+    <!--<tr>
+        <td colspan="5" style="border:double; background-color:red">Error</td>
+    </tr>-->
+</body>
+</html>
