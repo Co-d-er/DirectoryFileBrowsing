@@ -105,8 +105,8 @@ namespace Directory_File_Browsing.Models
             for (int i = 0; i < files.Length; i++)
             {
                 FileInfo file = new FileInfo(files[i]);
-                string type = file.Length < 10000000 ? "less" : (file.Length > 10000000 && file.Length < 50000000) ? "ok" : 
-                                                                (file.Length > 100000000) ? "more" : "";
+                string type = file.Length <= 10000000 ? "less" : (file.Length >= 10000000 && file.Length <= 50000000) ? "ok" : 
+                                                                (file.Length >= 100000000) ? "more" : "";
                 switch (type)
                 {
                     case "less":
